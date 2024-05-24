@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('descarga de fuentes') {
-            steps {
-                echo 'Descargo fuentes'
-            }
-        }
         stage('build') {
             steps {
                 echo 'build'
