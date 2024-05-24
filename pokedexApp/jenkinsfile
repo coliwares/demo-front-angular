@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('descarga de fuentes') {
+            steps {
+                echo 'Descargo fuentes'
+            }
+        }
+        stage('build') {
+            steps {
+                echo 'build'
+            }
+        }
+        stage('unit test') {
+            steps {
+                echo 'resultados Unit test'
+            }
+        }
+        stage('sonar') {
+            steps {
+                echo 'resultados sonar'
+            }
+        }
+        stage('despliegue desarrollo') {
+            steps {
+                echo 'en desa'
+            }
+        }
+        stage('paso a pro') {
+            steps {
+                echo 'en pro'
+            }
+        }
+
+    }
+}
