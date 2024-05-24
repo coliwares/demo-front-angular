@@ -13,6 +13,7 @@ pipeline {
             steps {
                 // build angular app in docker container
                 echo 'build angular'
+                workdir '/app'
                 sh 'npm --version'
             }
         }
