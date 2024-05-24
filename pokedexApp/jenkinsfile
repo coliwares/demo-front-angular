@@ -10,6 +10,7 @@ pipeline {
             steps {
                 // build angular app in docker container
                 echo 'build angular'
+                workdir = WORKDIR
                 sh 'docker-compose down'
                 sh 'docker-compose build'
             }
