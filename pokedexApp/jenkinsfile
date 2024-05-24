@@ -34,14 +34,7 @@ pipeline {
         stage('despliegue desarrollo') {
             steps {
                 echo 'desplegando en desa'
-                sh script:'''
-                    #!/bin/bash
-                    echo "This is start $(pwd)"
-                    cd ./pokedexApp
-                    echo "This is $(pwd)"
-                    docker-compose -f docker-compose.yml up -d
-                    '''
-            }
+                sh 'docker-compose -f ./pokedexApp/docker-compose.yml up'
         }
         stage('paso a pro') {
             steps {
