@@ -10,8 +10,8 @@ pipeline {
             steps {
                 // build angular app in docker container
                 echo 'Running Docker Compose build'
-                sh 'docker compose down'
-                sh 'docker compose -f docker-compose.yml build --no-cache'
+                sh 'docker-compose down'
+                sh 'docker-compose -f docker-compose.yml build --no-cache'
             }
         }
         stage('unit test') {
