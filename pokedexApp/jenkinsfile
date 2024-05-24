@@ -12,7 +12,7 @@ pipeline {
                 echo 'Running Docker Compose build'
                 sh 'pwd'
                 sh 'ls -la'
-                sh 'cd pokedexApp'
+                sh 'cd ./pokedexApp'
                 sh 'ls -la'
                 sh 'docker-compose down'
                 sh 'docker-compose -f docker-compose.yml build --no-cache'
