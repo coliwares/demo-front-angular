@@ -16,6 +16,7 @@ pipeline {
                     cd ./pokedexApp
                     echo "This is $(pwd)"
                     docker-compose down
+                    docker image prune -a -f
                     docker-compose -f docker-compose.yml build --no-cache
                     '''
             }
