@@ -5,22 +5,8 @@ pipeline {
         NODEIMAGE = 'node:18-alpine'
     }
 
+
     stages {
-        stage('Docker build') {
-            steps {
-                // build angular app in docker container
-                echo 'Running Docker Compose build'
-                sh script:'''
-                    #!/bin/bash
-                    echo "This is start $(pwd)"
-                    cd ./pokedexApp
-                    echo "This is $(pwd)"
-                    docker-compose down
-                    docker image prune -a -f
-                    docker-compose -f docker-compose.yml build --no-cache
-                    '''
-            }
-        }
         stage('unit test') {
             steps {
                 echo 'resultados Unit test'
@@ -33,8 +19,18 @@ pipeline {
         }
         stage('despliegue desarrollo :)') {
             steps {
-                echo 'desplegando en desa'
-                sh 'docker-compose -f ./pokedexApp/docker-compose.yml up'
+                // build angular app in docker container
+                echo 'Running Docker Compose build'
+                sh script:'''
+                    #!/bin/bash
+                    echo "This is start $(pwd)"
+                    cd ./pokedexApp
+                    echo "This is $(pwd)"
+                    docker-compose down
+                    docker image prune -a -f
+                    docker-compose -f docker-compose.yml build --no-cache
+                    docker-compose -f docker-compose.yml up -d
+                    '''
             }
         }
         stage('paso a pro') {
