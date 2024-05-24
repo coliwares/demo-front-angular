@@ -1,10 +1,17 @@
 pipeline {
     agent any
+    environment {
+        WORKDIR = '/app'
+        NODEIMAGE = 'node:18-alpine'
+    }
 
     stages {
         stage('build') {
             steps {
+                // build angular app in docker container
                 echo 'build angular'
+                sh 'docker-compose down'
+                sh 'docker-compose build'
             }
         }
         stage('unit test') {
@@ -20,6 +27,7 @@ pipeline {
         stage('despliegue desarrollo') {
             steps {
                 echo 'en desa'
+                sh 'docker-compose up -d'
             }
         }
         stage('paso a pro') {
