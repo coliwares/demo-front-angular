@@ -31,7 +31,7 @@ pipeline {
                 echo 'resultados sonar'
             }
         }
-        stage('despliegue desarrollo') {
+        stage('despliegue desarrollo :)') {
             steps {
                 echo 'desplegando en desa'
                 sh 'docker-compose -f ./pokedexApp/docker-compose.yml up'
