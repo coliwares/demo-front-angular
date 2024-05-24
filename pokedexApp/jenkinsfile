@@ -11,7 +11,7 @@ pipeline {
                 // build angular app in docker container
                 echo 'Running Docker Compose build'
                 sh 'pwd'
-                sh 'cd pokedexApp'
+                cd 'pokedexApp'
                 sh 'ls -la'
                 sh 'docker-compose down'
                 sh 'docker-compose -f docker-compose.yml build --no-cache'
