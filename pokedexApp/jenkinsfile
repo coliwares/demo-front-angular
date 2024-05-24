@@ -7,13 +7,13 @@ pipeline {
 
     stages {
         stage('build') {
+            agent {
+                dockerfile true
+            }
             steps {
                 // build angular app in docker container
                 echo 'build angular'
-                docker.image(NODEIMAGE).inside('-v $WORKDIR:/app') {
-                    sh 'docker-compose down'
-                    sh 'docker-compose build'
-                }
+                sh 'npm --version'
             }
         }
         stage('unit test') {
@@ -37,6 +37,5 @@ pipeline {
                 echo 'en pro'
             }
         }
-
     }
 }
