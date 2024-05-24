@@ -35,6 +35,7 @@ pipeline {
             steps {
                 echo 'desplegando en desa'
                 sh 'docker-compose -f ./pokedexApp/docker-compose.yml up'
+            }
         }
         stage('paso a pro') {
             steps {
