@@ -15,7 +15,7 @@ pipeline {
                     echo "This is start $(pwd)"
                     cd ./pokedexApp
                     echo "This is $(pwd)"
-                    docker-compose down 
+                    docker-compose down
                     docker-compose -f docker-compose.yml build --no-cache
                     '''
             }
@@ -32,7 +32,14 @@ pipeline {
         }
         stage('despliegue desarrollo') {
             steps {
-                echo 'en desa'
+                echo 'desplegando en desa'
+                sh script:'''
+                    #!/bin/bash
+                    echo "This is start $(pwd)"
+                    cd ./pokedexApp
+                    echo "This is $(pwd)"
+                    docker-compose -f docker-compose.yml up -d
+                    '''
             }
         }
         stage('paso a pro') {
