@@ -6,15 +6,12 @@ pipeline {
     }
 
     stages {
-        stage('build') {
-            agent {
-                dockerfile true
-            }
+        stage('Docker build') {
             steps {
                 // build angular app in docker container
-                echo 'build angular'
-                workdir '/app'
-                sh 'npm --version'
+                echo 'Running Docker Compose build'
+                sh 'docker compose down'
+                sh 'docker compose -f docker-compose.yml build --no-cache'
             }
         }
         stage('unit test') {
@@ -30,7 +27,6 @@ pipeline {
         stage('despliegue desarrollo') {
             steps {
                 echo 'en desa'
-                sh 'docker-compose up -d'
             }
         }
         stage('paso a pro') {
